@@ -243,6 +243,7 @@ public class GUIFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         ProducerConsumer productoConsumidor = new ProducerConsumer();
+        System.out.println(jSpinner1.getValue());
         productoConsumidor.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
