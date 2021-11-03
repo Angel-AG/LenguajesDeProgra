@@ -30,18 +30,26 @@ public class GUIFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jSpinner3 = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
+        numProductoresSpinner = new javax.swing.JSpinner();
+        numConsumidoresSpinner = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        esperaMsProductoresSpinner = new javax.swing.JSpinner();
+        esperaMsConsumidoresSpinner = new javax.swing.JSpinner();
+        tamanoBufferSpinner = new javax.swing.JSpinner();
+        valorNSpinner = new javax.swing.JSpinner();
+        valorMSpinner = new javax.swing.JSpinner();
+        numProductoresErrorLabel = new javax.swing.JLabel();
+        numConsumidoresErrorLabel = new javax.swing.JLabel();
+        tamanoBufferErrorLabel = new javax.swing.JLabel();
+        valorNErrorLabel = new javax.swing.JLabel();
+        rangoErrorLabel = new javax.swing.JLabel();
+        esperaMsProductoresErrorLabel = new javax.swing.JLabel();
+        esperaMsConsumidoresErrorLabel = new javax.swing.JLabel();
+        valorMErrorLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -54,7 +62,14 @@ public class GUIFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+        setMinimumSize(new java.awt.Dimension(440, 475));
+        setPreferredSize(new java.awt.Dimension(440, 460));
+
+        jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jPanel2.setDoubleBuffered(false);
+
+        jPanel1.setDoubleBuffered(false);
 
         jLabel5.setText("Tiempo de Espera (ms)");
 
@@ -68,6 +83,46 @@ public class GUIFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Cantidad");
 
+        numProductoresErrorLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        numProductoresErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        numProductoresErrorLabel.setText("Error: [1 - 10]");
+        numProductoresErrorLabel.setVisible(false);
+
+        numConsumidoresErrorLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        numConsumidoresErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        numConsumidoresErrorLabel.setText("Error: [1 - 10]");
+        numConsumidoresErrorLabel.setVisible(false);
+
+        tamanoBufferErrorLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        tamanoBufferErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        tamanoBufferErrorLabel.setText("Error: [1 - 100]");
+        tamanoBufferErrorLabel.setVisible(false);
+
+        valorNErrorLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        valorNErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        valorNErrorLabel.setText("Error: [0 - 9]");
+        valorNErrorLabel.setVisible(false);
+
+        rangoErrorLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        rangoErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        rangoErrorLabel.setText("Error: n <= m");
+        rangoErrorLabel.setVisible(false);
+
+        esperaMsProductoresErrorLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        esperaMsProductoresErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        esperaMsProductoresErrorLabel.setText("Error: [0 - 10,000]");
+        esperaMsProductoresErrorLabel.setVisible(false);
+
+        esperaMsConsumidoresErrorLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        esperaMsConsumidoresErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        esperaMsConsumidoresErrorLabel.setText("Error: [0 - 10,000]");
+        esperaMsConsumidoresErrorLabel.setVisible(false);
+
+        valorMErrorLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        valorMErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        valorMErrorLabel.setText("Error: [0 - 9]");
+        valorMErrorLabel.setVisible(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -77,52 +132,87 @@ public class GUIFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSpinner2)
-                    .addComponent(jTextField3)
-                    .addComponent(jSpinner1)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rangoErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(tamanoBufferSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(valorNSpinner, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(numProductoresSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(numConsumidoresErrorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(numConsumidoresSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tamanoBufferErrorLabel)
+                                    .addComponent(valorNErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 33, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(numProductoresErrorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(esperaMsProductoresErrorLabel)
+                    .addComponent(esperaMsConsumidoresErrorLabel)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(valorMErrorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(esperaMsProductoresSpinner, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(esperaMsConsumidoresSpinner, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(valorMSpinner, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addGap(18, 18, 18)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numProductoresErrorLabel)
+                    .addComponent(esperaMsProductoresErrorLabel))
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                        .addComponent(numProductoresSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(esperaMsProductoresSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(numConsumidoresErrorLabel)
+                    .addComponent(esperaMsConsumidoresErrorLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(numConsumidoresSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(esperaMsConsumidoresSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(tamanoBufferErrorLabel)
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tamanoBufferSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(valorNErrorLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(valorMErrorLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(valorNSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valorMSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(rangoErrorLabel)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -185,7 +275,7 @@ public class GUIFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                     .addComponent(jSpinner4))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,12 +310,12 @@ public class GUIFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,17 +323,91 @@ public class GUIFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jTabbedPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /***
+     * isInsideRange
+     * @param left
+     * @param right
+     * @param value
+     * @param errorLabel
+     * @return True if value is inside the range [left, right] and hide error 
+     * label, otherwise false and show error label.
+     */
+    private Boolean isInsideRange(Integer left, Integer right, Integer value, 
+            javax.swing.JLabel errorLabel) {
+        if (value < left || value > right) {
+            errorLabel.setVisible(true);
+            return false;
+        }
+        
+        errorLabel.setVisible(false);
+        return true;
+    }
+    
+    /***
+     * areInputsValid
+     * @return True if all inputs are valid, otherwise false
+     */
+    private Boolean areInputsValid() {
+        Boolean allGood = true;
+        
+        // Cantidad Productores [1 - 10]
+        Integer numProductores = (Integer) numProductoresSpinner.getValue();
+        allGood = isInsideRange(1, 10, numProductores,
+                numProductoresErrorLabel) && allGood;
+
+        // Cantidad Consumidores [1 - 10]
+        Integer numConsumidores = (Integer) numConsumidoresSpinner.getValue();
+        allGood = isInsideRange(1, 10, numConsumidores,
+                numConsumidoresErrorLabel) && allGood;
+        
+        // Tiempos de espera (ms) [0 - 10000]
+        Integer esperaProductores = 
+                (Integer) esperaMsProductoresSpinner.getValue();
+        allGood = isInsideRange(0, 10000, esperaProductores, 
+                esperaMsProductoresErrorLabel) && allGood;
+        
+        Integer esperaConsumidores = 
+                (Integer) esperaMsConsumidoresSpinner.getValue();
+        allGood = isInsideRange(0, 10000, esperaConsumidores,
+                esperaMsConsumidoresErrorLabel) && allGood;
+        
+        // Buffer [1 - 100]
+        Integer tamanoBuffer = (Integer) tamanoBufferSpinner.getValue();
+        allGood = isInsideRange(1, 100, tamanoBuffer,
+                tamanoBufferErrorLabel) && allGood;
+        
+        // Rango de valores [n, m], 0 <= n <= m <= 9
+        Integer valorN = (Integer) valorNSpinner.getValue();
+        allGood = isInsideRange(0, 9, valorN, valorNErrorLabel) && allGood;
+        
+        Integer valorM = (Integer) valorMSpinner.getValue();
+        allGood = isInsideRange(0, 9, valorM, valorMErrorLabel) && allGood;
+        
+        if (valorN > valorM) {
+            rangoErrorLabel.setVisible(true);
+            allGood = false;
+        } else {
+            rangoErrorLabel.setVisible(false);
+        }
+        
+        return allGood;
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ProducerConsumer productoConsumidor = new ProducerConsumer();
-        productoConsumidor.start();
+        Boolean allGood = areInputsValid();
+        
+        if (allGood) {
+            ProducerConsumer productoConsumidor = new ProducerConsumer();
+            productoConsumidor.start();            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -282,6 +446,10 @@ public class GUIFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel esperaMsConsumidoresErrorLabel;
+    private javax.swing.JSpinner esperaMsConsumidoresSpinner;
+    private javax.swing.JLabel esperaMsProductoresErrorLabel;
+    private javax.swing.JSpinner esperaMsProductoresSpinner;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -297,16 +465,20 @@ public class GUIFrame extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JSpinner jSpinner4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel numConsumidoresErrorLabel;
+    private javax.swing.JSpinner numConsumidoresSpinner;
+    private javax.swing.JLabel numProductoresErrorLabel;
+    private javax.swing.JSpinner numProductoresSpinner;
+    private javax.swing.JLabel rangoErrorLabel;
+    private javax.swing.JLabel tamanoBufferErrorLabel;
+    private javax.swing.JSpinner tamanoBufferSpinner;
+    private javax.swing.JLabel valorMErrorLabel;
+    private javax.swing.JSpinner valorMSpinner;
+    private javax.swing.JLabel valorNErrorLabel;
+    private javax.swing.JSpinner valorNSpinner;
     // End of variables declaration//GEN-END:variables
 }
