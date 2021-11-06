@@ -7,9 +7,15 @@ import java.util.logging.Logger;
 
 public class Producer extends Thread {
     Buffer buffer;
+    private int sleepTime;
+    private int floorVal;
+    private int ceilingVal;
     
-    Producer(Buffer buffer) {
+    Producer(Buffer buffer, int sleepTime, int floorVal, int ceilingVal) {
         this.buffer = buffer;
+        this.sleepTime = sleepTime;
+        this.floorVal = floorVal;
+        this.ceilingVal = ceilingVal;
     }
     
     @Override
@@ -26,7 +32,7 @@ public class Producer extends Thread {
             Buffer.print("Producer produced: " + product);
             
             try {
-                Thread.sleep(1000);
+                Thread.sleep(sleepTime);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
