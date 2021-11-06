@@ -405,8 +405,14 @@ public class GUIFrame extends javax.swing.JFrame {
         Boolean allGood = areInputsValid();
         
         if (allGood) {
-            ProducerConsumer productoConsumidor = new ProducerConsumer();
-            productoConsumidor.start();            
+            Buffer buffer = new Buffer();
+        
+            Producer producer = new Producer(buffer);
+            producer.start();
+        
+            Consumer consumer = new Consumer(buffer);
+            consumer.start();
+                  
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
