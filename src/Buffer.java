@@ -1,44 +1,46 @@
 
 
 
+import java.util.LinkedList;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Buffer {
     
-    private char buffer;
+    // Use BlockingQueue for bounded queues
+    private final BlockingQueue<String> buffer;
     
     Buffer(int size) {
-        this.buffer = 0;
+        this.buffer = new ArrayBlockingQueue<>(size);
     }
     
-    synchronized char consume() {
-        char product = 0;
+    synchronized String consume() {
+        String product;
         
-        if(this.buffer == 0) {
+        while (this.buffer.isEmpty()) {
             try {
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        product = this.buffer;
-        this.buffer = 0;
+        product = this.buffer.remove();
         notify();
         
         return product;
     }
     
-    synchronized void produce(char product) {
-        if(this.buffer != 0) {
+    synchronized void produce(String product) {
+        while (this.buffer.remainingCapacity() == 0) {
             try {
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        this.buffer = product;
-        
+        this.buffer.add(product);
         notify();
     }
     
