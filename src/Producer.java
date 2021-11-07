@@ -2,14 +2,17 @@
 
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Producer extends Thread {
     Buffer buffer;
-    private int sleepTime;
-    private int floorVal;
-    private int ceilingVal;
+    private final int sleepTime;
+    private final int floorVal;
+    private final int ceilingVal;
+    
+    private static final String OPERATIONS = "+-*/";
     
     Producer(Buffer buffer, int sleepTime, int floorVal, int ceilingVal) {
         this.buffer = buffer;
@@ -21,14 +24,20 @@ public class Producer extends Thread {
     @Override
     public void run() {
         System.out.println("Running Producer...");
-        String products = "AEIOU";
-        Random r = new Random(System.currentTimeMillis());
-        char product;
-        
+        String product;
+
         for(int i=0 ; i<5 ; i++) {
-            product = products.charAt(r.nextInt(5));
+            int idxOperation = ThreadLocalRandom.
+                    current().nextInt(OPERATIONS.length());
+            int firstNum = ThreadLocalRandom.
+                    current().nextInt(floorVal, ceilingVal + 1);
+            int secondNum = ThreadLocalRandom.
+                    current().nextInt(floorVal, ceilingVal + 1);
+            
+            product = String.format("(%c %d %d)", 
+                    OPERATIONS.charAt(idxOperation), firstNum, secondNum);
             this.buffer.produce(product);
-            //System.out.println("Producer produced: " + product);
+            
             Buffer.print("Producer produced: " + product);
             
             try {
