@@ -10,6 +10,21 @@
  */
 public class GUIFrame extends javax.swing.JFrame {
 
+    
+    // Values 
+    // private
+    private Integer numProductores;
+    private Integer numConsumidores;
+    private Integer esperaProductores;
+    private Integer esperaConsumidores;
+    private Integer tamanoBuffer;
+    private Integer valorN;
+    private Integer valorM;
+    // public
+    public Buffer buffer;
+    public Producer[] producers;
+    public Consumer[] consumers;
+    
     /**
      * Creates new form GUIFrame
      */
@@ -358,36 +373,36 @@ public class GUIFrame extends javax.swing.JFrame {
         Boolean allGood = true;
         
         // Cantidad Productores [1 - 10]
-        Integer numProductores = (Integer) numProductoresSpinner.getValue();
+        numProductores = (Integer) numProductoresSpinner.getValue();
         allGood = isInsideRange(1, 10, numProductores,
                 numProductoresErrorLabel) && allGood;
 
         // Cantidad Consumidores [1 - 10]
-        Integer numConsumidores = (Integer) numConsumidoresSpinner.getValue();
+        numConsumidores = (Integer) numConsumidoresSpinner.getValue();
         allGood = isInsideRange(1, 10, numConsumidores,
                 numConsumidoresErrorLabel) && allGood;
         
         // Tiempos de espera (ms) [0 - 10000]
-        Integer esperaProductores = 
+        esperaProductores = 
                 (Integer) esperaMsProductoresSpinner.getValue();
         allGood = isInsideRange(0, 10000, esperaProductores, 
                 esperaMsProductoresErrorLabel) && allGood;
         
-        Integer esperaConsumidores = 
+        esperaConsumidores = 
                 (Integer) esperaMsConsumidoresSpinner.getValue();
         allGood = isInsideRange(0, 10000, esperaConsumidores,
                 esperaMsConsumidoresErrorLabel) && allGood;
         
         // Buffer [1 - 100]
-        Integer tamanoBuffer = (Integer) tamanoBufferSpinner.getValue();
+        tamanoBuffer = (Integer) tamanoBufferSpinner.getValue();
         allGood = isInsideRange(1, 100, tamanoBuffer,
                 tamanoBufferErrorLabel) && allGood;
         
         // Rango de valores [n, m], 0 <= n <= m <= 9
-        Integer valorN = (Integer) valorNSpinner.getValue();
+        valorN = (Integer) valorNSpinner.getValue();
         allGood = isInsideRange(0, 9, valorN, valorNErrorLabel) && allGood;
         
-        Integer valorM = (Integer) valorMSpinner.getValue();
+        valorM = (Integer) valorMSpinner.getValue();
         allGood = isInsideRange(0, 9, valorM, valorMErrorLabel) && allGood;
         
         if (valorN > valorM) {
@@ -405,8 +420,20 @@ public class GUIFrame extends javax.swing.JFrame {
         Boolean allGood = areInputsValid();
         
         if (allGood) {
-            ProducerConsumer productoConsumidor = new ProducerConsumer();
-            productoConsumidor.start();            
+            buffer = new Buffer(tamanoBuffer);
+            producers = new Producer[numProductores];
+            for (int i = 0; i < producers.length; i++)
+            {
+                producers[i] = new Producer(buffer, esperaProductores);
+                producers[i].start();
+            }
+            
+            consumers = new Consumer[numProductores];
+            for (int i = 0; i < consumers.length; i++)
+            {
+                consumers[i] = new Consumer(buffer, esperaConsumidores);   
+                consumers[i].start();
+            }               
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

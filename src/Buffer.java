@@ -8,7 +8,7 @@ public class Buffer {
     
     private char buffer;
     
-    Buffer() {
+    Buffer(int size) {
         this.buffer = 0;
     }
     
