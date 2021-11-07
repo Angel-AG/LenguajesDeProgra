@@ -37,9 +37,7 @@ public class Producer extends Thread {
             product = String.format("(%c %d %d)", 
                     OPERATIONS.charAt(idxOperation), firstNum, secondNum);
             this.buffer.produce(product);
-            
-            Buffer.print("Producer produced: " + product);
-            
+
             try {
                 Thread.sleep(sleepTime);
             } catch (InterruptedException ex) {

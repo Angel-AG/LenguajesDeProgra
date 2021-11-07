@@ -27,6 +27,7 @@ public class Buffer {
             }
         }
         product = this.buffer.remove();
+        Buffer.print("Consumer consumed: " + product);
         notify();
         
         return product;
@@ -41,6 +42,7 @@ public class Buffer {
             }
         }
         this.buffer.add(product);
+        print("Producer produced: " + product);
         notify();
     }
     
