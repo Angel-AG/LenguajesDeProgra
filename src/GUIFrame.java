@@ -429,7 +429,7 @@ public class GUIFrame extends javax.swing.JFrame {
                 producers[i].start();
             }
             
-            consumers = new Consumer[numProductores];
+            consumers = new Consumer[numConsumidores];
             for (int i = 0; i < consumers.length; i++)
             {
                 consumers[i] = new Consumer(buffer, esperaConsumidores);   
