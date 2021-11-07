@@ -17,7 +17,7 @@ public class Buffer {
         
         if(this.buffer == 0) {
             try {
-                wait(1000);
+                wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -32,7 +32,7 @@ public class Buffer {
     synchronized void produce(char product) {
         if(this.buffer != 0) {
             try {
-                wait(1000);
+                wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
