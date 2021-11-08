@@ -18,7 +18,7 @@ public class Consumer extends Thread {
         System.out.println("Running Consumer...");
         String product;
         
-        for(int i=0 ; i<5 ; i++) {
+        for(int i=0 ; i<1000 ; i++) {
             product = this.buffer.consume();
             
             try {

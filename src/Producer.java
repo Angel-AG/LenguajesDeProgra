@@ -11,14 +11,16 @@ public class Producer extends Thread {
     private final int sleepTime;
     private final int floorVal;
     private final int ceilingVal;
+    int ID;
     
     private static final String OPERATIONS = "+-*/";
     
-    Producer(Buffer buffer, int sleepTime, int floorVal, int ceilingVal) {
+    Producer(Buffer buffer, int sleepTime, int floorVal, int ceilingVal, int ID) {
         this.buffer = buffer;
         this.sleepTime = sleepTime;
         this.floorVal = floorVal;
         this.ceilingVal = ceilingVal;
+        this.ID = ID;
     }
     
     @Override
@@ -26,7 +28,7 @@ public class Producer extends Thread {
         System.out.println("Running Producer...");
         String product;
 
-        for(int i=0 ; i<5 ; i++) {
+        for(int i=0 ; i<1000 ; i++) {
             int idxOperation = ThreadLocalRandom.
                     current().nextInt(OPERATIONS.length());
             int firstNum = ThreadLocalRandom.
@@ -36,7 +38,7 @@ public class Producer extends Thread {
             
             product = String.format("(%c %d %d)", 
                     OPERATIONS.charAt(idxOperation), firstNum, secondNum);
-            this.buffer.produce(product);
+            this.buffer.produce(product, ID);
 
             try {
                 Thread.sleep(sleepTime);
