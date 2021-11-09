@@ -262,13 +262,9 @@ public class GUIFrame extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID del Consumidor", "Tarea", "Resultado"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -419,19 +415,22 @@ public class GUIFrame extends javax.swing.JFrame {
         return allGood;
     }
     
-    public void anadirTareaPorHacer(int id, String product){
-       System.out.println("Metiendo a tabla");
-        
+    
+    
+    public void anadirTareaPorHacer(int id, String product){        
        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
        modelo.addRow(new Object[]{id, product});
     }
     
     public void completarTareaPorHacer(){
-       System.out.println("Sacando de tabla");
        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
        modelo.removeRow(0);
     }
 
+    public void anadirTareaRealizada(int id, String task, int res){
+        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        modelo.addRow(new Object[]{id, task, res});
+    }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -450,7 +449,7 @@ public class GUIFrame extends javax.swing.JFrame {
             consumers = new Consumer[numConsumidores];
             for (int i = 0; i < consumers.length; i++)
             {
-                consumers[i] = new Consumer(buffer, esperaConsumidores);   
+                consumers[i] = new Consumer(buffer, esperaConsumidores,i);   
                 consumers[i].start();
             }               
         }

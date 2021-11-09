@@ -20,7 +20,7 @@ public class Buffer  {
         this.gui = gui;
     }
     
-    synchronized String consume() {
+    synchronized String consume(int id) {
         String product;
         
         while (this.buffer.isEmpty()) {
@@ -31,7 +31,10 @@ public class Buffer  {
             }
         }
         product = this.buffer.remove();
+        int result = -1;
+        //TODO:- Agregar la lógica para calcular el resultado de la cadena de scheme.
         gui.completarTareaPorHacer();
+        gui.anadirTareaRealizada(id, product, result);
         Buffer.print("Consumer consumed: " + product);
         notify();
         
@@ -52,6 +55,7 @@ public class Buffer  {
         print("Producer produced: " + product);
         notify();
     }
+    
     
     static int count = 1;
     synchronized static void print(String string) {

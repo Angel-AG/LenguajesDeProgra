@@ -11,16 +11,16 @@ public class Producer extends Thread {
     private final int sleepTime;
     private final int floorVal;
     private final int ceilingVal;
-    int ID;
+    int id;
     
     private static final String OPERATIONS = "+-*/";
     
-    Producer(Buffer buffer, int sleepTime, int floorVal, int ceilingVal, int ID) {
+    Producer(Buffer buffer, int sleepTime, int floorVal, int ceilingVal, int id) {
         this.buffer = buffer;
         this.sleepTime = sleepTime;
         this.floorVal = floorVal;
         this.ceilingVal = ceilingVal;
-        this.ID = ID;
+        this.id = id;
     }
     
     @Override
@@ -38,7 +38,7 @@ public class Producer extends Thread {
             
             product = String.format("(%c %d %d)", 
                     OPERATIONS.charAt(idxOperation), firstNum, secondNum);
-            this.buffer.produce(product, ID);
+            this.buffer.produce(product, id);
 
             try {
                 Thread.sleep(sleepTime);

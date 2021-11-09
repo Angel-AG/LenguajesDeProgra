@@ -7,10 +7,12 @@ import java.util.logging.Logger;
 public class Consumer extends Thread {
     Buffer buffer;
     private final int sleepTime;
+    private final int id;
     
-    Consumer(Buffer buffer, int sleepTime) {
+    Consumer(Buffer buffer, int sleepTime, int id) {
         this.buffer = buffer;
         this.sleepTime = sleepTime;
+        this.id = id;
     }
     
     @Override
@@ -19,7 +21,7 @@ public class Consumer extends Thread {
         String product;
         
         for(int i=0 ; i<1000 ; i++) {
-            product = this.buffer.consume();
+            product = this.buffer.consume(id);
             
             try {
                 Thread.sleep(sleepTime);
