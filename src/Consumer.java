@@ -7,10 +7,12 @@ import java.util.logging.Logger;
 public class Consumer extends Thread {
     Buffer buffer;
     private final int sleepTime;
+    private final int id;
     
-    Consumer(Buffer buffer, int sleepTime) {
+    Consumer(Buffer buffer, int sleepTime, int id) {
         this.buffer = buffer;
         this.sleepTime = sleepTime;
+        this.id = id;
     }
     
     @Override
@@ -18,8 +20,9 @@ public class Consumer extends Thread {
         System.out.println("Running Consumer...");
         String product;
         
-        for(int i=0 ; i<5 ; i++) {
-            product = this.buffer.consume();
+        //TODO :- Cambiar este ciclo a un while que use una bandera que cambiar de valor al dar clic en Inicio/Detener(pendiente)
+        for(int i=0 ; i<1000 ; i++) {
+            product = this.buffer.consume(id);
             
             try {
                 Thread.sleep(sleepTime);
