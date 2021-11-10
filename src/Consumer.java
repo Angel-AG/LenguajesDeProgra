@@ -20,6 +20,7 @@ public class Consumer extends Thread {
         System.out.println("Running Consumer...");
         String product;
         
+        //TODO :- Cambiar este ciclo a un while que use una bandera que cambiar de valor al dar clic en Inicio/Detener(pendiente)
         for(int i=0 ; i<1000 ; i++) {
             product = this.buffer.consume(id);
             

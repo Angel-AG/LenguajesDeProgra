@@ -1,7 +1,5 @@
 
-import java.util.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
+
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.logging.Level;
@@ -41,7 +39,7 @@ public class Buffer  {
         return product;
     }
     
-    synchronized void produce(String product, int ID) {
+    synchronized void produce(String product, int id) {
         while (this.buffer.remainingCapacity() == 0) {
             try {
                 wait();
@@ -50,7 +48,7 @@ public class Buffer  {
             }
         }
         this.buffer.add(product);
-        gui.anadirTareaPorHacer(ID, product);
+        gui.anadirTareaPorHacer(id, product);
        
         print("Producer produced: " + product);
         notify();

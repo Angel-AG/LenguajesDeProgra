@@ -28,6 +28,7 @@ public class Producer extends Thread {
         System.out.println("Running Producer...");
         String product;
 
+        //TODO :- Cambiar este ciclo a un while que use una bandera que cambiar de valor al dar clic en Inicio/Detener(pendiente)
         for(int i=0 ; i<1000 ; i++) {
             int idxOperation = ThreadLocalRandom.
                     current().nextInt(OPERATIONS.length());
