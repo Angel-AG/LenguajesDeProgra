@@ -10,12 +10,14 @@ public class Buffer  {
     // Use BlockingQueue for bounded queues
     private final BlockingQueue<String> buffer;
     private GUIFrame gui;
+    private int maxSize;
     
     
     
     Buffer(int size, GUIFrame gui) {
         this.buffer = new ArrayBlockingQueue<>(size);
         this.gui = gui;
+        this.maxSize = size;
     }
     
     synchronized String consume(int id) {
@@ -32,6 +34,10 @@ public class Buffer  {
         String result = evaluatePrefix(product);
         gui.completarTareaPorHacer();
         gui.anadirTareaRealizada(id, product, result);
+        double dSize = this.buffer.size();
+        double dMax = this.maxSize;
+        double dper = (dSize/dMax) * 100;
+        gui.ActualizarProgressBar((int)dper);
         Buffer.print("Consumer consumed: " + product);
         notify();
         
@@ -48,6 +54,10 @@ public class Buffer  {
         }
         this.buffer.add(product);
         gui.anadirTareaPorHacer(id, product);
+        double dSize = this.buffer.size();
+        double dMax = this.maxSize;
+        double dper = (dSize/dMax) * 100;
+        gui.ActualizarProgressBar((int)dper);
        
         print("Producer produced: " + product);
         notify();
