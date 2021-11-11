@@ -426,7 +426,7 @@ public class GUIFrame extends javax.swing.JFrame {
        modelo.removeRow(0);
     }
 
-    public void anadirTareaRealizada(int id, String task, double res){
+    public void anadirTareaRealizada(int id, String task, String res){
         DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
         modelo.addRow(new Object[]{id, task, res});
     }
