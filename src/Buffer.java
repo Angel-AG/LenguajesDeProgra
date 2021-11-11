@@ -29,7 +29,7 @@ public class Buffer  {
             }
         }
         product = this.buffer.remove();
-        int result = -1;
+        double result = evaluatePrefix(product);
         //TODO:- Agregar la lógica para calcular el resultado de la cadena de scheme.
         gui.completarTareaPorHacer();
         gui.anadirTareaRealizada(id, product, result);
@@ -52,6 +52,31 @@ public class Buffer  {
        
         print("Producer produced: " + product);
         notify();
+    }
+    
+    
+    // Recieves a prefix expression (ex: "(/ 6 2)", "(+ 5 3)") and returns result
+    static double evaluatePrefix(String expression) {
+        // Remove parenthesis and split by spaces
+        String[] components = expression.substring(1, expression.length() - 1).split(" ");
+                
+        char op = components[0].charAt(0);
+        double n1 = Double.parseDouble(components[1]);
+        double n2 = Double.parseDouble(components[2]);
+        
+        switch (op) {
+            case '+':
+                return (n1 + n2);
+            case '-':
+                return (n1 - n2);
+            case '*':
+                return (n1 * n2);
+            case '/':
+                // TODO: n/0
+                return (n1 / n2);
+            default:
+                return 0.0;
+        }
     }
     
     
