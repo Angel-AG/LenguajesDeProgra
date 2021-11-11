@@ -67,15 +67,19 @@ public class Buffer  {
         switch (op) {
             case '+':
                 result = n1 + n2;
+                break;
             case '-':
                 result = n1 - n2;
+                break;
             case '*':
                 result = n1 * n2;
+                break;
             case '/':
                 if (n2 == 0) {
                     return("ERROR");
                 }
                 result = n1 / n2;
+                break;
         }  
         
         return String.valueOf(result);
