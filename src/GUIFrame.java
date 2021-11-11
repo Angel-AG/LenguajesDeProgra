@@ -428,7 +428,10 @@ public class GUIFrame extends javax.swing.JFrame {
 
     public void anadirTareaRealizada(int id, String task, String res){
         DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        // Add finished task row
         modelo.addRow(new Object[]{id, task, res});
+        // Increment counter spinner by one
+        numTareasRealizadasSpinner.setValue((Integer) numTareasRealizadasSpinner.getValue() + 1);
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
