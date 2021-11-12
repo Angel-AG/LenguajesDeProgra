@@ -457,13 +457,18 @@ public class GUIFrame extends javax.swing.JFrame {
         jProgressBar1.setValue(per);
     }
     
+    public void ReiniciarCont(){
+        numTareasRealizadasSpinner.setValue(0);
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Boolean allGood = areInputsValid();
-        jButton1.setEnabled(false);
-        jButton2.setEnabled(true);
-     
+        
         if (allGood) {
+            jButton1.setEnabled(false);
+            jButton2.setEnabled(true);
+            
             buffer = new Buffer(tamanoBuffer, guiH); 
             
             producers = new Producer[numProductores];
@@ -492,11 +497,25 @@ public class GUIFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         // TODO add your handling code here:
-            
-       
+        for(int i = 0; i < producers.length; i++){
+            producers[i].TerminarProcesos();
+        }
+        for(int i =0; i < consumers.length; i++){
+            consumers[i].ApagarProcesos();
+        }
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setRowCount(0);
+        
+        DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
+        modelo2.setRowCount(0);
+        
+        buffer.Reset();
             
         jButton2.setEnabled(false);
         jButton1.setEnabled(true);
+        
+        jProgressBar1.setValue(0);
         
         
         

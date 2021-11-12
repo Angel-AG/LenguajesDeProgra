@@ -12,6 +12,7 @@ public class Producer extends Thread {
     private final int floorVal;
     private final int ceilingVal;
     int id;
+    private boolean ban;
     
     private static final String OPERATIONS = "+-*/";
     
@@ -21,6 +22,7 @@ public class Producer extends Thread {
         this.floorVal = floorVal;
         this.ceilingVal = ceilingVal;
         this.id = id;
+        this.ban = true;
     }
     
     @Override
@@ -29,7 +31,7 @@ public class Producer extends Thread {
         String product;
 
         //TODO :- Cambiar este ciclo a un while que use una bandera que cambiar de valor al dar clic en Inicio/Detener(pendiente)
-        for(int i=0 ; i<1000 ; i++) {
+        while(ban){
             int idxOperation = ThreadLocalRandom.
                     current().nextInt(OPERATIONS.length());
             int firstNum = ThreadLocalRandom.
@@ -47,6 +49,10 @@ public class Producer extends Thread {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+    public void TerminarProcesos(){
+        this.ban = false;
     }
     
 }

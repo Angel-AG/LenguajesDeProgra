@@ -102,5 +102,10 @@ public class Buffer  {
         System.out.println(string);
     }
     
+    public void Reset(){
+        count = 1;
+        gui.ReiniciarCont();
+    }
+    
 }
 
